@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "D:\\software\\Anaconda\\python.exe",
+    "terminal.integrated.shell.windows": "D:\\software\\Anaconda\\python.exe",
+    "files.defaultLanguage":"python",
+    "python.linting.enabled": true, 
+    "python.linting.flake8Enabled": true,
+
+}
