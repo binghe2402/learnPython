@@ -29,20 +29,20 @@ class Solution:
     def __slide_area(self, x, y):
         slide = 0
         if x + 1 < self.n:
-            slide += max(self.grid[y][x] - self.grid[y][x+1],0)
+            slide += max(self.grid[y][x] - self.grid[y][x+1], 0)
         else:
             slide += self.grid[y][x]
-            
+
         if x - 1 >= 0:
-            slide += max(self.grid[y][x] - self.grid[y][x-1],0)
+            slide += max(self.grid[y][x] - self.grid[y][x-1], 0)
         else:
             slide += self.grid[y][x]
         if y + 1 < self.m:
-            slide += max(self.grid[y][x] - self.grid[y+1][x],0)
+            slide += max(self.grid[y][x] - self.grid[y+1][x], 0)
         else:
             slide += self.grid[y][x]
         if y - 1 >= 0:
-            slide += max(self.grid[y][x] - self.grid[y-1][x],0)
+            slide += max(self.grid[y][x] - self.grid[y-1][x], 0)
         else:
             slide += self.grid[y][x]
         return slide
