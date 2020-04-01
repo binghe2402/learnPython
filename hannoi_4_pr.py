@@ -1,5 +1,6 @@
 def hannoi_4_num_move(n, h):
-    h[0:3] = [0, 1, 3]
+    if n < 3:
+        h[0:3] = [0, 1, 3]
     if h[n] is not None:
         return h[n]
     elif n > 2:
