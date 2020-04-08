@@ -14,6 +14,7 @@ class Solution:
 
                 if stack:
                     d = h - stack[-1] - 1
+                    # 注意此处不能直接 d = h - bottom， 否则对321213型会判断出错，第二个2之前的就被忽略了。
                     water += d * \
                         (min(height[stack[-1]], height[h])-height[bottom])
             else:
