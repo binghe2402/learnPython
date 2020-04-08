@@ -1,7 +1,9 @@
+'''井字棋游戏'''
 import os
 
 
 def print_board(board):
+    """绘制棋盘棋子"""
     print(board['TL'] + '|' + board['TM'] + '|' + board['TR'])
     print('-+-+-')
     print(board['ML'] + '|' + board['MM'] + '|' + board['MR'])
@@ -10,6 +12,7 @@ def print_board(board):
 
 
 def main():
+    """执行"""
     init_board = {
         'TL': ' ', 'TM': ' ', 'TR': ' ',
         'ML': ' ', 'MM': ' ', 'MR': ' ',

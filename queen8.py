@@ -1,4 +1,9 @@
+# coding=utf-8
+''' 八皇后'''
+
+
 def queen(pool, cur=0):
+    '''八皇后'''
     if cur == len(pool):
         print(pool)
         return 0
