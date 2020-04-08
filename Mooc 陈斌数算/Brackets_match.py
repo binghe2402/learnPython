@@ -1,4 +1,8 @@
+'''括号匹配'''
+
+
 def bracketMatch(s):
+    '''利用栈做括号匹配'''
     stack = []
     for bra in s:
         if bra in "({[":
@@ -13,5 +17,5 @@ def bracketMatch(s):
         return True
 
 
-s = ''
-print(bracketMatch(s))
+st = ''
+print(bracketMatch(st))
