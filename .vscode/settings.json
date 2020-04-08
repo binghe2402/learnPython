@@ -1,9 +1,12 @@
 {
     "python.pythonPath": "D:\\software\\Anaconda\\python.exe",
-    //"terminal.integrated.shell.windows": "D:\\software\\Anaconda\\python.exe",
+    "terminal.integrated.shell.windows": "D:\\software\\Anaconda\\python.exe",
     "files.defaultLanguage": "python",
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=PyQt5"
+    ],
     "python.formatting.provider": "autopep8",
     //
     "editor.formatOnType": true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码
