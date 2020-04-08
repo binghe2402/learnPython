@@ -3,21 +3,24 @@ from typing import List
 
 class Solution:
     def trap(self, height: List[int]) -> int:
-        water = [None]*len(height)
-        h = sorted(enumerate(height), key=lambda x: -x[1])
-        for k in h:
-            for i in range(min(k[0], h[0][0]), max(k[0], h[0][0])+1):
-                if water[i] is None:
-                    water[i] = k[1]-height[i]
+        water = 0
+        if not height:
+            return water
+        left_max, right_max = height[0], height[-1]
+        i, j = 0, len(height)-1
+        while i < j:
+            if left_max < right_max:
+                water += left_max - height[i]
+                i += 1
+                left_max = max(height[i], left_max)
+            else:
+                water += right_max - height[j]
+                j -= 1
+                right_max = max(height[j], right_max)
+        return water
 
-        # 计算最高和次高之间的水，然后计算最高和3高之间的水。
-        # 相应跳过重复部分。
-        # 3高水位低与次高，所以3高和最高之间的位置若有重合，水位一定低于次高水位，可直接跳过。
 
-        return sum(water)
-
-
-height = [5, 2, 1, 2, 1, 5]
+height = [0, 1, 0, 2, 1]
 s = Solution()
 water = s.trap(height)
 print(water)
