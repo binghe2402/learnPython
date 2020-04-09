@@ -10,7 +10,7 @@ class Solution:
         self.m = m
         self.n = n
         self.k = k
-        self.direction = [(0, 1), (1, 0)]
+        self.direction = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         self.searched = []
 
         cnt = self.search(0, 0)
@@ -19,7 +19,7 @@ class Solution:
     def search(self, i, j):
         if not(0 <= i < self.m and 0 <= j < self.n):
             return 0
-        if sum([int(x) for x in (str(i) + str(j)) if x.isdecimal()]) > self.k:
+        if sum([int(x) for x in (str(i) + str(j))]) > self.k:
             return 0
         if (i, j) in self.searched:
             return 0
