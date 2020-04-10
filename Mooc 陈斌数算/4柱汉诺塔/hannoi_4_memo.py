@@ -1,3 +1,4 @@
+
 def hannoi_4_num_move(n, h):
     if n < 3:
         h[0:3] = [0, 1, 3]
@@ -11,7 +12,6 @@ def hannoi_4_num_move(n, h):
 
 # n = int(input())
 n = 10
-p = [2**x-1 for x in range(n+1)]
 h = [None]*(n+1)
 nn = hannoi_4_num_move(n, h)
 print(nn)
