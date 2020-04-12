@@ -1,4 +1,9 @@
-'''参考  https://zhuanlan.zhihu.com/p/27643991 和文档'''
+'''
+参考知乎
+https://zhuanlan.zhihu.com/p/27643991 和
+文档
+https://docs.python.org/zh-cn/3/library/functools.html#functools.singledispatch
+'''
 
 
 import functools
