@@ -1,7 +1,7 @@
 from p445_add_two_number_II import ListNode, Solution
-
-input1 = [7, 2, 4, 3]
-input2 = [5, 6, 4]
+#from p445_add_two_number_II翻转列表 import ListNode, Solution
+input1 = [1, 1]
+input2 = [9, 9]
 
 
 def stringToListNode(input):
