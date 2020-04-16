@@ -9,18 +9,11 @@ class Solution:
                 return n
             if n <= 1:
                 return 1
-            x = 1
-            f = F(k, n-(x))+1
-
-            for x in range(2, n):
-                temp = max(F(k, n-(x))+1, F(k-1, x-1)+1)
+            f = n
+            for x in range(1, n+1):
+                temp = max(F(k, n-(x)), F(k-1, x-1))+1
                 if temp < f:
                     f = temp
-
-            x = n
-            temp = F(k-1, x-1)+1
-            if temp < f:
-                f = temp
             return f
 
         for k in range(1, K+1):
@@ -32,6 +25,6 @@ class Solution:
 
 s = Solution()
 K = 4
-N = 5000
+N = 50
 res = s.superEggDrop(K, N)
 print(res)
