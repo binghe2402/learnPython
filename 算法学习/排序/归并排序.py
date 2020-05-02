@@ -1,34 +1,36 @@
-def merge_sort(nums):
-    # def divide(nums):
-    #     if len(nums) == 1:
-    #         return nums, []
-    #     else:
-    #         return nums[:len(nums)//2], nums[len(nums)//2:]
+from typing import List
+from numpy.random import randint
 
+
+def merge_sort(nums):
     def merge(nums1, nums2):
-        new_nums = []
+        nums = []
         i = j = 0
-        while i < len(nums1) or j < len(nums2):
-            if j >= len(nums2) or (i < len(nums1) and nums1[i] < nums2[j]):
-                new_nums.append(nums1[i])
+        while i < len(nums1) and j < len(nums2):
+            if nums1[i] < nums2[j]:
+                nums.append(nums1[i])
                 i += 1
             else:
-                new_nums.append(nums2[j])
+                nums.append(nums2[j])
                 j += 1
-        return new_nums
+        if i < len(nums1):
+            nums.extend(nums1[i:])
+        elif j < len(nums2):
+            nums.extend(nums2[j:])
+        return nums
 
-    def sort(nums):
-        left, right = 0, len(nums)
-        if left+1 < right:
-            mid = (left+right)//2
-            nums1 = nums[left:mid]
-            nums2 = nums[mid:right]
-            return merge(sort(nums1), sort(nums2))
-        else:
+    def devide_sort(nums):
+        if len(nums) == 1:
             return nums
+        else:
+            mid = len(nums)//2
+            nums1 = devide_sort(nums[:mid])
+            nums2 = devide_sort(nums[mid:])
+            return merge(nums1, nums2)
+    return devide_sort(nums)
 
-    return sort(nums)
 
-
-a = [1213, 34, 21, 3, 56, 2, 4, 5, 4, 3, 5, 6, 7, 65, 434, 2]
-print(merge_sort(a))
+nums = list(randint(1, 100, 1000))
+res = merge_sort(nums)
+print(res)
+print(sorted(nums) == res)
