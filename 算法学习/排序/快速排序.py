@@ -37,10 +37,3 @@ nums = list(randint(1, 100, 500))
 res = quick_sort(nums)
 print(res)
 print(sorted(nums) == res)
-
-
-0 1
-1 2
-key = 1
-
-2 > 1
