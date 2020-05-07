@@ -60,7 +60,7 @@ def get_random_list(path_list, conf, pre='random_list_'):
     # 储存所有random_list的数据，
     # 结构为以 t 为索引的 t 个list，
     # 每个list中为这个t对应的所有(x,y,z)元组
-    file_name = pre+conf
+    file_name = pre+conf+'.txt'
     with open(os.path.join(path_list, file_name), 'r') as random_list:
         select_lst = [[] for i in range(range_t)]
         for line in random_list.readlines():
@@ -113,5 +113,5 @@ def main():
                 out.write(data[pos]+'\n')
 
 
-if __name__ == "__main":
+if __name__ == "__main__":
     main()
