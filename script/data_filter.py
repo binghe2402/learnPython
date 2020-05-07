@@ -53,7 +53,7 @@ coord_len = 2
 conf_pos = 13
 conf_len = 5
 
-file_filter = os.listdir(path_filter)
+file_filter = sorted(os.listdir(path_filter))
 
 
 def get_random_list(path_list, conf, pre='random_list_'):
@@ -70,6 +70,7 @@ def get_random_list(path_list, conf, pre='random_list_'):
 
 
 def main():
+    # print(len(file_filter))
     for file_name in file_filter:
         file_name = file_name.replace('random_pp', 'position')
         print(file_name)
@@ -91,6 +92,8 @@ def main():
                             (y_l-y) % range_xyz,
                             (z_l-z) % range_xyz)
                            for x_l, y_l, z_l in select_lst[(t+delta_t) % range_t]]
+        # print(len(select_lst_rela))
+
         data = {}
         # 读取数据文件
         with open(os.path.join(path_data, file_name), 'r') as data_file:
@@ -110,7 +113,7 @@ def main():
         # 按照顺序追加写入到输出文件
         with open(os.path.join(out_path, out_file_name_pre+conf+file_ext), 'a') as out:
             for pos in select_lst_rela:
-                out.write(data[pos]+'\n')
+                out.write(data[pos])
 
 
 if __name__ == "__main__":
