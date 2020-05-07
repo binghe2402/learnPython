@@ -16,11 +16,10 @@ class Solution:
         self.val = -float('inf')
 
         def helper(root):
-            if root:
-                if not helper(root.left):
-                    return False
-            else:
+            if root is None:
                 return True
+            if not helper(root.left):
+                return False
             if not root.val > self.val:
                 return False
             self.val = root.val
