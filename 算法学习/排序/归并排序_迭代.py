@@ -37,7 +37,28 @@ def merge_sort(nums: List):
     return nums
 
 
-nums = [list(randint(1, 900, i)) for i in range(2000)]
-res = all([merge_sort(i) == sorted(i) for i in nums])
-print(res)
+def f_rand(i): return list(randint(1, 900, i))
+
+
+def check(i): return merge_sort(i) == sorted(i)
+
+
+if __name__ == '__main__':
+    # 并行
+
+    with mp.Pool() as pl:
+        nums = pl.map(f_rand, list(range(2000)))
+
+        res = all(pl.map(check, nums))
+        print(res)
+    '''
+    # 串行
+    # nums = [list(randint(1, 900, i)) for i in range(2000)]
+    nums = map(f_rand, range(2000))
+    # res = all([merge_sort(i) == sorted(i) for i in nums])
+    res = all(map(check, nums))
+    print(res)
+    '''
+
+
 # print(sorted(nums) == res)
