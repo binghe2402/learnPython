@@ -2,8 +2,8 @@ from typing import List
 from numpy.random import randint
 
 
-def merge_sort(nums):
-    def merge(nums1, nums2):
+def merge_sort(nums: List):
+    def merge(nums1: List, nums2: List):
         nums = []
         i = j = 0
         while i < len(nums1) and j < len(nums2):
@@ -19,7 +19,7 @@ def merge_sort(nums):
             nums.extend(nums2[j:])
         return nums
 
-    def devide_sort(nums):
+    def devide_sort(nums: List):
         if len(nums) == 1:
             return nums
         else:
