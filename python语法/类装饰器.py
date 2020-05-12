@@ -91,4 +91,5 @@ https://foofish.net/python-closure.html
 参考阅读
 https://zhuanlan.zhihu.com/p/65968462
 https://foofish.net/magic-method.html
+https://www.jianshu.com/p/e1d95c4e1697
 '''
