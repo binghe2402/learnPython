@@ -12,7 +12,7 @@ class Solution:
             if root and root not in path:
                 track.append(root)
                 if root in son:
-                    son.remove(root)
+                    son.remove(root)    # 这里不remove应该也行，题目要求了不会重复
                     return track
                 if dfs(root.left, son, track, path) or dfs(root.right, son, track, path):
                     return track
