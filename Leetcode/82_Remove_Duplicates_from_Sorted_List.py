@@ -11,15 +11,16 @@ class Solution:
             return
         hair = ListNode(None)
         hair.next = head
-        pre, cur, nxt = hair, head, head.next
+        pre, cur = hair, head
 
-        while cur and nxt:
-            if nxt.val == cur.val:
-                pre.next = nxt.next
-                cur.next = nxt.next
-                nxt = cur.next
+        while cur and cur.next:
+            if cur.next.val == cur.val:
+                while cur.next and cur.next.val == cur.val:
+                    cur.next = cur.next.next
+                pre.next = cur.next
             else:
                 if pre.next is cur:
                     pre = pre.next
-                cur, nxt = cur.next, nxt.next
+
+                cur = cur.next
         return hair.next
