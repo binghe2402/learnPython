@@ -17,26 +17,24 @@ class Solution:
             cur.next = pre
             return tail, head
 
-        grouptail = lasttail = head
-        first = True
-        while grouptail:
-            for n in range(k-1):
-                # print(grouptail)
-                grouptail = grouptail.next
-                if not grouptail:
+        hair = ListNode(0)    # 关键在于hair节点的引入，使第一段也可以正常加入循环
+        hair.next = head
+
+        pretail = hair
+        tail = pretail
+
+        while head:
+            for n in range(k):
+                tail = tail.next
+                if not tail:
+                    head = tail
                     break
             else:
-                # head = grouptail.next
-                head, tail = reverseListNode(head, grouptail)
-                # print(tail)
-                if first:
-                    newhead = head
-                    first = False
-                else:
-                    lasttail.next = head
-                lasttail = tail
-                grouptail = head = tail.next
-        return newhead
+                head, tail = reverseListNode(head, tail)
+                pretail.next = head
+                pretail = tail
+                head = tail.next
+        return hair.next
 
 
 def listToListNode(input):
