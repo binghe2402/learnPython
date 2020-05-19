@@ -28,7 +28,7 @@ class Solution:
         当nums[i]为正，新的最大值最小值由原来的最大值最小值*nums[i]得到。
         当nums[i]为负，应交换最大值和最小。
         注意由于还要对得到的结果做max/min,所以先交换再计算。
-        
+
         或者直接根据得到的max_value和min_value的大小关系交换
         '''
         max_value, min_value, max_res = nums[0], nums[0], nums[0]
