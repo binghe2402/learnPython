@@ -26,7 +26,16 @@ def seq2tree(seq):
     return tree
 
 
+def invertTree(root):
+    if root:
+        invertTree(root.left)
+        invertTree(root.right)
+        root.left, root.right = root.right, root.left
+    return root
+
+
 def inorderTree(root):
+
     def find(root, res=[]):
         # # 递归法
         # if root:
@@ -52,7 +61,8 @@ def inorderTree(root):
     return find(root)
 
 
-lst = eval(input())
+lst = list(map(int, input().split()))
 tree = seq2tree(lst)
-inorder = inorderTree(tree)
+invert = invertTree(tree)
+inorder = inorderTree(invert)
 print(('%s '*len(inorder)).strip() % tuple(i for i in inorder))
