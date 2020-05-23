@@ -1,3 +1,4 @@
+'''直接取余做hash二次探测做rehash的散列表'''
 import bisect
 
 

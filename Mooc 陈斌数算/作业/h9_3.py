@@ -1,3 +1,6 @@
+'''嵌套列表表示的N叉树的后序遍历'''
+
+
 def postorderTree(tree, postorder=[]):
     if len(tree) > 1:
         for node in tree[1:]:

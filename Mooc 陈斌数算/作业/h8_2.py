@@ -1,3 +1,4 @@
+'''列表出现最频繁的元素'''
 from collections import Counter
 
 
