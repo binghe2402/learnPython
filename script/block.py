@@ -1,46 +1,49 @@
 #!/usr/bin/python3
 
 import glob
-rownum = 6
+import os
+
+rownum = 7
 print("the rownum is %d" % rownum, flush=True)
+directory = ["stout0", "stout5", "stout10", "stout15"]
 
-for conf in range(0, 901, 10):
-    print(conf, flush=True)
-    filepath = "./pip_position/pip_position_b%04d*" % conf
-    print(filepath, flush=True)
-    files = glob.glob(filepath)
-    print(len(files), flush=True)
-    fp = open(files[0])
-    ave = fp.read()
-    fp.close()
-    ave = list(map(float, ave.split()))
-    ave = map(list, zip(*[iter(ave)]*rownum))
-    avedata = sorted(ave, key=lambda k: [k[0], k[1], k[2], k[3]])
-    for num in range(1, len(files)):
-        print(num, flush=True)
-        fp = open(files[num])
-        tmp = fp.read()
+
+for dire in directory:
+    if not os.path.exists("./block_mom002/%s" % (dire)):
+        os.mkdir("./block_mom002/%s" % (dire))
+        print("establish directory %s" % dire)
+    for conf in range(0, 491, 10):
+        print(conf, flush=True)
+        filepath = "./mom002/%s/phi_wall_source_a%04d*" % (dire, conf)
+        print(filepath, flush=True)
+        files = glob.glob(filepath)
+        print(len(files), flush=True)
+        fp = open(files[0])
+        ave = fp.read()
         fp.close()
-        tmp = list(map(float, tmp.split()))
-        tmp = map(list, zip(*[iter(tmp)]*rownum))
-        tmp = sorted(tmp, key=lambda k: [k[0], k[1], k[2], k[3]])
-        for i in range(len(tmp)):
-            for j in range(rownum):
-                avedata[i][j] = avedata[i][j]+tmp[i][j]
+        ave = list(map(float, ave.split()))
+        ave = map(list, zip(*[iter(ave)]*rownum))
+        avedata = list(ave)
+        for num in range(1, len(files)):
+            print(num, flush=True)
+            fp = open(files[num])
+            tmp = fp.read()
+            fp.close()
+            tmp = list(map(float, tmp.split()))
+            tmp = map(list, zip(*[iter(tmp)]*rownum))
+            tmp = list(tmp)
+            for i in range(len(tmp)):
+                for j in range(rownum):
+                    avedata[i][j] = avedata[i][j]+tmp[i][j]
 
-    for i in range(len(avedata)):
-        for j in range(rownum):
-           # print(avedata[i][j])
-            avedata[i][j] = avedata[i][j]/len(files)
-
-    outputfile = "./download/pip_position_block_b%04d.txt" % conf
-    with open(outputfile, 'w') as fp:
         for i in range(len(avedata)):
-            for j in range(rownum-1):
-                fp.write(str(avedata[i][j])+" ")
-            fp.write("\n")
+            for j in range(rownum):
+                # print(avedata[i][j])
+                avedata[i][j] = avedata[i][j]/len(files)
 
-
-2 3 4 3 2 1
-1 2 3 1 1 1
-1 1 4 3 2 1
+        outputfile = "./block_mom002/%s/phi_wall_source_block_a%04d.txt" % (dire, conf)
+        with open(outputfile, 'w') as fp:
+            for i in range(len(avedata)):
+                for j in range(rownum):
+                    fp.write(str(avedata[i][j])+" ")
+                fp.write("\n")
