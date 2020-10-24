@@ -2,3 +2,6 @@ t26.py
 .vscode/
 .pylintrc
 output.txt
+python语法/练习.py
+.gitignore
+
