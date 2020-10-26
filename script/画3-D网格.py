@@ -36,8 +36,8 @@ coord_it = product(r, repeat=3)
 coords = []
 for c in coord_it:
     coords.append(c)
-for c in coords:
-    if not random.randint(0, 0):
-        ax.scatter(*c, color='k', s=80, marker='o')
+for c in random.sample(coords, 8):
+    # if c[0] % 2 and c[1] % 2 and c[2] % 2:
+    ax.scatter(*c, color='k', s=80, marker='o')
 plt.axis('off')
 plt.show()
