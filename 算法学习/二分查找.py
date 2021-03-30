@@ -23,10 +23,24 @@ def binSearch_left(nums: List, val):
     return left
 
 
+def binSearch_right(nums: List, val):
+    left, right = -1, len(nums)-1
+    while left < right:
+        mid = right - (right-left)//2
+        if nums[mid] == val:
+            return mid
+        elif nums[mid] < val:
+            left = mid
+        else:
+            right = mid-1
+
+    return right
+
+
 def test():
-    test_nums = [1, 2, 3, 4, 9, 9, 16, 27]
-    test_val = 6
-    res = binSearch_left(test_nums, test_val)
+    test_nums = [0, 1, 2, 3, 9, 9, 16, 27]
+    test_val = 9
+    res = binSearch_right(test_nums, test_val)
     print(res)
 
 
