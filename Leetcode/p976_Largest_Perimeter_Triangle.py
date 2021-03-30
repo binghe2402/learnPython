@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def largestPerimeter(self, A: List[int]) -> int:
         A.sort(reverse=1)
