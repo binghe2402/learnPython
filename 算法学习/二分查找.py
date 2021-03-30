@@ -21,3 +21,14 @@ def binSearch_left(nums: List, val):
             right = mid
 
     return left
+
+
+def test():
+    test_nums = [1, 2, 3, 4, 9, 9, 16, 27]
+    test_val = 6
+    res = binSearch_left(test_nums, test_val)
+    print(res)
+
+
+if __name__ == "__main__":
+    test()
