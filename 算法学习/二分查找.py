@@ -24,6 +24,8 @@ def binSearch_left(nums: List, val):
 
 
 def binSearch_right(nums: List, val):
+    # 当存在目标值，则求目标值。否则求小于目标值的最大值
+    即求下界，x > value条件的最小x的位置，
     left, right = -1, len(nums)-1
     while left < right:
         mid = right - (right-left)//2
@@ -35,6 +37,19 @@ def binSearch_right(nums: List, val):
             right = mid-1
 
     return right
+
+
+def binSearch(nums: List, val):  # 参考《算法图解》p7
+    left, right = 0, len(nums)-1
+    while left <= right:
+        mid = left+(right-left)//2
+        if nums[mid] == val:
+            return mid
+        if nums[mid] < val:
+            right = mid-1
+        else:
+            left = mid + 1
+    return None
 
 
 def test():
