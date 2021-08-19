@@ -13,21 +13,24 @@ def fun_1(x, y):
 
 
 d = printer(fun_1, 3, 5)
+print('---')
 print(d)
+print('======================')
+
 
 '''
 更实用化的装饰器
 '''
 
 
-def printer(fun):         # 传入待装饰的fun函数
-    def wrap(*args):      # wrap函数对fun进行装饰
-        print('A')        # 添加额外功能
+def printer(fun):          # 传入待装饰的fun函数
+    def wrap(*args):       # wrap函数对fun进行装饰
+        print('A')         # 添加额外功能
         return fun(*args)  # 返回fun本身的结果。或装饰后的结果。
-    return wrap           # 返回一个装饰了fun后得到的wrap函数
+    return wrap            # 返回一个装饰了fun后得到的wrap函数
 
 
-def a_fun(x, y):          # 一个实际的函数
+def a_fun(x, y):           # 一个实际的函数
     return x, y
 
 
@@ -54,29 +57,31 @@ def a_fun(x, y):
 
 e = a_fun(3, 5)
 print(e)
+print(a_fun.__name__)
 
 '''
-使用@wraps保留原函数的元信息
+使用@wraps保留被装饰函数的元信息
 '''
 
 from functools import wraps    # NOQA: E402
 # 这条注释临时性的忽略了autopep8的E402，也就是import位置不在顶部
 
 
-def decorator(fun):
+def printer(fun):
     @wraps(fun)
-    def printer(*a):
+    def wrap(*a):
         print('A')
         return fun(*a)
-    return printer
+    return wrap
 
 
-@decorator
+@printer
 def hello(x, y):
     return x, y
 
 
 d = hello(3, 5)
+print(hello.__name__)
 print(d)
 
 '''
