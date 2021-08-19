@@ -8,6 +8,6 @@ def flatten(lst):
     return flt_lst
 
 
-lst = [1, [[2], [3], [[6]]]]
+lst = [1, [[2], [3, [4, [5, [6]], 7], [8]], [[6]]]]
 ll = flatten(lst)
 print(ll)
