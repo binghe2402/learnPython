@@ -17,16 +17,16 @@ class Foo:
         return res
 
 
-@Foo
+@Foo                    # bar = Foo(bar)
 def bar(x):             # bar 成为一个 Foo(bar)实例
     print(x)
     print('bar')
 
 
-bar(5)                  # 调用bar实例,触发__call__.5被传入bar实例的__call__,然后又传入bar函数
+bar(5)                  # 调用bar实例,触发__call__. 5被传入bar实例的__call__,然后又传入bar函数
 
 '''
-对于本身无参数的方法，定义无参数装饰器，带参数调用
+对于本身无参数的函数或方法，定义无参数装饰器，带参数调用
 '''
 
 
